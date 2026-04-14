@@ -1,10 +1,6 @@
 # Prosty język dla nauki algorytmów
 
-1. Dane studentów:
-  - Yuliya Matsulevich, matsyuliya@student.agh.edu.pl
-  - Marta Ronchyk, martaronchyk@student.agh.edu.pl
-
-2. Założenia programu:
+1. Założenia programu:
   - Ogólne cele: Stworzenie przejrzystego środowiska do uruchamiania algorytmów bez zbędnego "szumu" składniowego. Język wspiera podstawowe struktury danych i sterowania.
 
   - Rodzaj translatora: Interpreter
@@ -15,7 +11,7 @@
 
   - Sposób realizacji skanera/parsera: Wykorzystanie generatora PLY (Python Lex-Yacc). Skaner bazuje na wyrażeniach regularnych, a parser implementuje gramatykę bezkontekstową typu LALR.
 
-3. Opis tokenów:
+2. Opis tokenów:
 
 | Kod Tokena        | Reguła / Wartość        | Opis                                                         |
 |-------------------|------------------------|--------------------------------------------------------------|
@@ -32,7 +28,7 @@
 | SEMICOLON         | ;                      | Separator instrukcji                                         |
 | DOT               | .                      | Znak kończący strukturę programu                             |
 
-4. Gramatyka formatu:
+3. Gramatyka formatu:
 
 ```ebnf
 program     ::= "BEGIN" stmt_list "END" "."
