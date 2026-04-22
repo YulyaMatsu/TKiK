@@ -20,7 +20,7 @@ def scan_and_highlight(input_code):
     while pos < length:
         ch = input_code[pos]
 
-        # 1. Obsługa białych znaków (zachowujemy je dla HTML)
+        # 1. obsługa białych znaków (dla HTML)
         if ch.isspace():
             space_str = ""
             while pos < length and input_code[pos].isspace():
@@ -29,7 +29,7 @@ def scan_and_highlight(input_code):
             html_output += space_str
             continue
 
-        # 2. Identyfikatory i słowa kluczowe (zaczynają się od litery)
+        # 2. identyfikatory i słowa kluczowe (zaczynają się od litery)
         if ch.isalpha() or ch == '_':
             ident = ""
             while pos < length and (input_code[pos].isalnum() or input_code[pos] == '_'):
@@ -40,7 +40,7 @@ def scan_and_highlight(input_code):
             html_output += f"<span style='color: {COLORS[token_type]}'>{ident}</span>"
             continue
 
-        # 3. Liczby
+        # 3. liczby
         if ch.isdigit():
             num = ""
             while pos < length and input_code[pos].isdigit():
@@ -49,7 +49,7 @@ def scan_and_highlight(input_code):
             html_output += f"<span style='color: {COLORS['T_NUMBER']}'>{num}</span>"
             continue
 
-        # 4. Ciągi znaków (Stringi)
+        # 4. ciągi znaków (str)
         if ch == '"':
             string_val = '"'
             pos += 1
@@ -62,20 +62,20 @@ def scan_and_highlight(input_code):
             html_output += f"<span style='color: {COLORS['T_STRING']}'>{string_val}</span>"
             continue
 
-        # 5. Operatory
+        # 5. operatory
         if ch in "+-*=":
             html_output += f"<span style='color: {COLORS['T_OP']}'>{ch}</span>"
             pos += 1
             continue
 
-        # 6. Interpunkcja
+        # 6. interpunkcja
         if ch in "();":
             html_output += f"<span style='color: {COLORS['T_PUNCT']}'>{ch}</span>"
             pos += 1
             continue
 
-        # 7. Nieznany znak (Unknown)
-        # Zamiana nawiasów trójkątnych na encje HTML, aby nie popsuć pliku wyjściowego
+        # 7. nieznany znak 
+        # zamiana nawiasów trójkątnych na encje HTML, aby nie popsuć pliku wyjśc
         safe_ch = ch.replace('<', '&lt;').replace('>', '&gt;')
         html_output += f"<span style='color: {COLORS['T_UNKNOWN']}'>{safe_ch}</span>"
         pos += 1
