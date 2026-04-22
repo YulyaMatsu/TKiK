@@ -1,0 +1,3 @@
+let wynik = 10 + 20;
+show("Wynik to:");
+show(wynik);
